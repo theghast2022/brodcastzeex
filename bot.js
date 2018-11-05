@@ -1,17 +1,47 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
+var prefix = "-";
 
-client.on('ready', () => {
-  console.log('Logged in as ${client.user.tag}!');
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
 });
 
 
-client.on('ready', async() => {
-var server = "508255957629796372"; // ايدي السررفر
-var channel = "508255957629796374";//ايدي الروم
-    setInterval(()=>{
-    client.guilds.get(server).channels.get(channel).send('Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , Magic Spam , ')
-    },305);
-})
+client.on('ready', () => {
+   console.log(`----------------`);
+      console.log(`Desert Bot- Script By : i1Suhaib`);
+        console.log(`----------------`);
+      console.log(`ON ${client.guilds.size} Servers '     Script By : i1Suhaib ' `);
+    console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`Clide Broadcast`,"http://twitch.tv/idk")
+client.user.setStatus("dnd")
+});
 
-client.login('NTA3OTE2MjIyOTAyMzA0Nzc4.Dr8mwA.GLjv7n29VHP-vzYEnqKE-EgOK2Y');
+client.on("message", message => {
+
+    if (message.content.startsWith(prefix + "bco")) {
+                 if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+let args = message.content.split(" ").slice(1);
+var argresult = args.join(' '); 
+message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+m.send(`${argresult}\n ${m}`);
+})
+message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+message.delete(); 
+};     
+});
+
+
+
+client.login("NTA5MDU2NjYxMzQwNjg0MzA2.DsIRHg.yJ-bpeirrukUzWjNM07-Cvd5PTc");
